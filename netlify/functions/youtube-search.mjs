@@ -170,7 +170,7 @@ export default async request => {
     if (!response.ok) throw new Error(`La búsqueda respondió ${response.status}`);
     const data = await response.json();
     const results = collectItems(data).slice(0, 20);
-    return json({ ok: true, query, filter, results });
+    return json({ ok: true, source: "youtube-music", query, filter, results });
   } catch (error) {
     console.error("YouTube Music search:", error);
     return json({
