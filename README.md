@@ -22,7 +22,7 @@ Biblioteca digital responsive para descubrir romance, fantasía, ficción y libr
 
 ### 2. Conectar D1 al proyecto Pages
 1. Crea/importa el proyecto Pages desde este repositorio y usa la rama `main`.
-2. No configures un comando de build. Directorio de salida: `/`.
+2. No configures un comando de build. Directorio de salida: `.`.
 3. En **Settings → Functions → D1 database bindings**, agrega un binding con variable **DB** y selecciona `entre-paginas-db`.
 4. Guarda y vuelve a desplegar.
 
