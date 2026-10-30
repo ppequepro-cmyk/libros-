@@ -1,6 +1,7 @@
 import { getStore } from "@netlify/blobs";
 
 const store = getStore("entre-paginas-ranking");
+const ALLOWED_BOOKS = new Set("1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 29 30 31 32 33 34 35 37 38 40 41 42 44 45 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74".split(" "));
 const json = (data, status = 200) => new Response(JSON.stringify(data), {
   status,
   headers: {
@@ -67,7 +68,7 @@ export default async (request) => {
 
     if (!/^[a-f0-9-]{36}$/i.test(userId)) return json({ error: "Identificador de lector inválido." }, 400);
     if (nickname.length < 2 || nickname.length > 20) return json({ error: "El apodo debe tener entre 2 y 20 caracteres." }, 400);
-    if (!/^\\d{1,4}$/.test(bookId)) return json({ error: "Solo se aceptan libros del catálogo." }, 400);
+    if (!ALLOWED_BOOKS.has(bookId)) return json({ error: "Solo se aceptan libros del catálogo." }, 400);
 
     const key = `weeks/${week}/${userId}/${bookId}.json`;
     const previous = await store.get(key, { type: "json" });
