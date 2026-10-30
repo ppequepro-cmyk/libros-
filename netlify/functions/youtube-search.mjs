@@ -4,7 +4,7 @@ const FILTERS = {
   videos: "EgWKAQIQAWoSEAUQAxAJEAoQERAQEAQQDhAV",
   albums: "EgWKAQIYAWoSEAUQAxAJEAoQERAQEAQQDhAV",
   artists: "EgWKAQIgAWoSEAUQAxAJEAoQERAQEAQQDhAV",
-  playlists: "EgeKAQQoADgBahIQBRADEAkQChAREBAQBBAOEBU%3D"
+  playlists: "EgeKAQQoADgBahIQBRADEAkQChAREBAQBBAOEBU="
 };
 
 const json = (data, status = 200) => new Response(JSON.stringify(data), {
