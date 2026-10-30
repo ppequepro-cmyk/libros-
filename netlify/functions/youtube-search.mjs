@@ -31,10 +31,19 @@ function textOf(value) {
 }
 
 function findVideoId(item) {
-  return item?.playlistItemData?.videoId
-    || item?.navigationEndpoint?.watchEndpoint?.videoId
-    || item?.overlay?.musicItemThumbnailOverlayRenderer?.content?.musicPlayButtonRenderer?.playNavigationEndpoint?.watchEndpoint?.videoId
-    || null;
+  const seen = new Set();
+  const visit = value => {
+    if (!value || typeof value !== "object" || seen.has(value)) return null;
+    seen.add(value);
+    if (typeof value.videoId === "string" && /^[a-zA-Z0-9_-]{11}$/.test(value.videoId)) return value.videoId;
+    if (value.watchEndpoint?.videoId) return value.watchEndpoint.videoId;
+    for (const child of Object.values(value)) {
+      const found = visit(child);
+      if (found) return found;
+    }
+    return null;
+  };
+  return visit(item);
 }
 
 function thumbnailOf(item) {
