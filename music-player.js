@@ -40,7 +40,7 @@
    if(!file)throw new Error("No hay audio compatible");
    const path=String(file.name).split("/").map(encodeURIComponent).join("/");
    const url="https://archive.org/download/"+encodeURIComponent(id)+"/"+path;
-   tracks.push({name,url,source:"online"});if(index<0)load(0);paint();button.textContent="Añadida";
+   tracks.push({name,url,source:"online"});if(index<0)load(0,false);paint();sub.textContent="Añadida a la cola. Pulsa ▶ para reproducir.";button.textContent="Añadida";
   }catch(e){button.disabled=false;button.textContent="No disponible";}
  }
  searchForm.addEventListener("submit",e=>{e.preventDefault();const q=searchInput.value.trim();if(q)searchOpenMusic(q);});
