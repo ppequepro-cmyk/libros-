@@ -63,7 +63,7 @@ export default async (request) => {
     try { body = await request.json(); } catch { return json({ error: "Solicitud inválida." }, 400); }
 
     const userId = String(body?.userId || "");
-    const nickname = String(body?.nickname || "").trim().replace(/\\s+/g, " ");
+    const nickname = String(body?.nickname || "").trim().replace(/\s+/g, " ");
     const bookId = String(body?.bookId || "");
 
     if (!/^[a-f0-9-]{36}$/i.test(userId)) return json({ error: "Identificador de lector inválido." }, 400);
