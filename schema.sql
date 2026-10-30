@@ -10,3 +10,8 @@ CREATE TABLE IF NOT EXISTS reading_events (
   PRIMARY KEY (session_id, book_id, event_type)
 );
 CREATE INDEX IF NOT EXISTS idx_reading_events_type ON reading_events(event_type);
+
+CREATE TABLE IF NOT EXISTS ai_usage (
+  hour_bucket TEXT PRIMARY KEY,
+  requests INTEGER NOT NULL DEFAULT 0
+);
