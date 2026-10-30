@@ -44,7 +44,7 @@
   }catch(e){button.disabled=false;button.textContent="No disponible";}
  }
  searchForm.addEventListener("submit",e=>{e.preventDefault();const q=searchInput.value.trim();if(q)searchOpenMusic(q);});
-\n $("epMusicSeek").addEventListener("input",e=>{if(Number.isFinite(audio.duration))audio.currentTime=audio.duration*(Number(e.target.value)/1000);});
+ $("epMusicSeek").addEventListener("input",e=>{if(Number.isFinite(audio.duration))audio.currentTime=audio.duration*(Number(e.target.value)/1000);});
  audio.addEventListener("timeupdate",()=>{if(Number.isFinite(audio.duration)){$("epMusicSeek").value=String(Math.round(audio.currentTime/audio.duration*1000));$("epMusicCurrent").textContent=fmt(audio.currentTime);$("epMusicDuration").textContent=fmt(audio.duration);}});
  audio.addEventListener("play",paint);audio.addEventListener("pause",paint);audio.addEventListener("ended",()=>{if(!repeat&&tracks.length>1)load(index+1);else paint();});
  window.addEventListener("beforeunload",()=>urls.forEach(URL.revokeObjectURL));
