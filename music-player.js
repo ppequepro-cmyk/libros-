@@ -138,6 +138,7 @@
       youtubeIndex = 0;
     }
     paint();
+    $("epMusicArtwork").hidden = false;
     $("epMusicArtwork").src = "https://i.ytimg.com/vi/" + encodeURIComponent(videoId) + "/hqdefault.jpg";
     $("epMusicArtwork").alt = "Portada de " + (trackTitle || "la canción");
     updatePlayButton(true);
@@ -158,6 +159,7 @@
     audio.src = localTracks[localIndex].url;
     $("epMusicArtwork").src = "";
     $("epMusicArtwork").alt = "";
+    $("epMusicArtwork").hidden = true;
     paint();
     if (shouldPlay) audio.play().catch(() => {
       sub.textContent = "Toca reproducir para iniciar el audio.";
